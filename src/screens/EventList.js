@@ -13,7 +13,7 @@ class EventList extends Component{
 
   render() {
     const { events, isFetched } = this.props;
-    // console.log( this.props );
+
     return (
       <View style={ styles.container }>
         <StatusBar hidden={ true }/>
@@ -22,7 +22,7 @@ class EventList extends Component{
           <FlatList
             style={ styles.list }
             data={ events }
-            renderItem={ event => <EventCard name={ event.name }/>}
+            renderItem={ ({item:{name}}) => <EventCard name={ name }/>}
             keyExtractor={ event => event.id}
           />
           : null
@@ -50,7 +50,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return{
     events: state.events,
     isFetched: state.isFetched
