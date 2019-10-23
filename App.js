@@ -1,23 +1,36 @@
 import React from 'react';
-import { createDrawerNavigator } from 'react-navigation-drawer';
-import { createAppContainer } from 'react-navigation'
-import EventList from './src/screens/EventList';
-import BetSlip from './src/screens/BetSlip';
+import { View, StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { reducer } from './src/reducer';
+import AppContainer from './src/navigator';
 
-const navigator = createDrawerNavigator({
-  Events: {
-    screen: EventList
-  },
-  Bets: {
-    screen: BetSlip
-  }
-},
-  {
-    initialRouteName: 'Events',
-    drawerType: 'front',
-    drawerPosition: 'right',
-    contentComponent: BetSlip
-  }
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducer,
+  composeEnhancers(
+    applyMiddleware(thunk)
+  )
 );
 
-export default createAppContainer(navigator);
+const App = () => {
+  return (
+    <Provider store={store}>
+      <View style={styles.container}>
+        <AppContainer />
+      </View>
+    </Provider>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff'
+  }
+});
+
+export default App;
+
+

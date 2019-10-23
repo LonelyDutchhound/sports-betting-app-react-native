@@ -22,9 +22,12 @@
     "redux": "^4.0.4",
     "redux-saga": "^1.1.1",
     "redux-thunk": "^2.3.0"
+
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.1.0"
+    "babel-preset-expo": "^7.1.0",
+    "remote-redux-devtools": "^0.5.16",
+    "redux-devtools-extension": "^2.13.8"
   },
   "private": true
 }
