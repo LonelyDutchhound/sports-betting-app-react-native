@@ -4,15 +4,23 @@ import { connect } from 'react-redux';
 import {makeBet, deleteBet} from "../actions/betActions";
 
 class BetBtn extends Component {
+  state = { isSelected: false };
 
   render() {
-    console.log(this.props);
-    const { name, price, id, bets, dispatch } = this.props;
+    const { name, price, id, makeBet: makeABet, deleteBet: deleteABet } = this.props;
     return (
       <TouchableOpacity
-        style={styles.btn}
-        onPress={(id)=> { makeBet(id);
-          console.log(bets)}}>
+        style={ this.state.isSelected ? styles.btn_sel: styles.btn}
+        onPress={()=> {
+          if (this.state.isSelected) {
+            this.setState({ isSelected: false });
+            deleteABet(id);
+          } else {
+            this.setState({ isSelected: true });
+            makeABet(id);
+          }
+        }}
+      >
         <View style={styles.btnContainer}>
           <Text style={styles.btnText}>
             { name }
@@ -24,7 +32,7 @@ class BetBtn extends Component {
       </TouchableOpacity>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   btn:{
@@ -34,6 +42,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'lightgrey'
+  },
+  btn_sel:{
+    height: 40,
+    width: 100,
+    margin: 10,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: 'lightgreen'
   },
   btnContainer:{
     height: 40,
@@ -53,11 +69,9 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    makeBet: ()=> dispatch(makeBet(id)),
-    deleteBet: ()=> dispatch(deleteBet(id))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+    makeBet: (id)=> dispatch(makeBet(id)),
+    deleteBet: (id)=> dispatch(deleteBet(id))
+});
 
 export default connect( mapStateToProps, mapDispatchToProps )(BetBtn);
