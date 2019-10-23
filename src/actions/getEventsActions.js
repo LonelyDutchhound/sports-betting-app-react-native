@@ -1,4 +1,4 @@
-import { DELETE_BET, GET_EVENTS, MAKE_BET } from "./constants";
+import { GET_EVENTS } from "../constants";
 
 export const getData = () => {
   return async function (dispatch) {
@@ -15,14 +15,4 @@ export const getData = () => {
 export const getEvents = (events) => ({
   type: GET_EVENTS,
   events
-});
-
-export const makeBet = id => ({
-  type: MAKE_BET,
-  id
-});
-
-export const deleteBet = id => ({
-  type: DELETE_BET,
-  id
 });

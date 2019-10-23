@@ -1,18 +1,25 @@
 import React from 'react';
-import {Text, View, StyleSheet} from "react-native";
-import {BetBtn} from "./BetBtn";
+import {Text, View, StyleSheet, FlatList} from "react-native";
+import BetBtn from "./BetBtn";
 
 
-export const MarketCard = (props) => {
+export const MarketCard = ({ name, selections }) => {
   return (
     <View style={styles.textContainer}>
       <Text>
-        Market
+        { name }
       </Text>
-      <View style={styles.btnsContainer}>
-        <BetBtn />
-        <BetBtn />
-      </View>
+        <FlatList
+          style={styles.btnsContainer}
+          data={ selections }
+          renderItem={ ({ item }) =>
+            <BetBtn
+              name={ item.name }
+              price ={ item.price }
+              id={ item.id }/>
+          }
+          keyExtractor={ item => item.id }
+        />
     </View>
 
   )
@@ -20,6 +27,7 @@ export const MarketCard = (props) => {
 
 const styles = StyleSheet.create({
   textContainer:{
+    flex: 1,
     borderTopWidth: 1,
     borderTopColor: 'lightgrey',
   },
@@ -27,6 +35,6 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   }
 });

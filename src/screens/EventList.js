@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { View, StyleSheet, StatusBar, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import MenuBar from "../components/MenuBar";
-import { getData } from '../actions';
+import { getData } from '../actions/getEventsActions';
 import { EventCard } from '../components/EventCard';
 
 class EventList extends Component{
+
   componentDidMount() {
     const { getData } = this.props;
     getData();
@@ -13,7 +14,6 @@ class EventList extends Component{
 
   render() {
     const { events, isFetched } = this.props;
-
     return (
       <View style={ styles.container }>
         <StatusBar hidden={ true }/>
@@ -22,15 +22,15 @@ class EventList extends Component{
           <FlatList
             style={ styles.list }
             data={ events }
-            renderItem={ ({item:{name}}) => <EventCard name={ name }/>}
-            keyExtractor={ event => event.id}
+            renderItem={ ({ item }) => <EventCard name={ item.name } markets ={ item.markets }/>}
+            keyExtractor={ item => item.id }
           />
           : null
         }
           </View>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   container:{
