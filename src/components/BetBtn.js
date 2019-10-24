@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
-import {View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import {makeBet, deleteBet} from "../actions/betActions";
+import { toggleBet } from "../actions/betActions";
 
 class BetBtn extends Component {
-  state = { isSelected: false };
 
   render() {
-    const { name, price, id, makeBet: makeABet, deleteBet: deleteABet } = this.props;
+    const { name, price, id, toggleBet: toggleABet, selections } = this.props;
+    const selection = selections.filter( bet => bet.id === id )[0];
     return (
       <TouchableOpacity
-        style={ this.state.isSelected ? styles.btn_sel: styles.btn}
-        onPress={()=> {
-          if (this.state.isSelected) {
-            this.setState({ isSelected: false });
-            deleteABet(id);
-          } else {
-            this.setState({ isSelected: true });
-            makeABet(id);
-          }
-        }}
+        style={ selection.isSelected ? styles.btn_sel: styles.btn}
+        onPress={ () => toggleABet(id) }
       >
-        <View style={styles.btnContainer}>
-          <Text style={styles.btnText}>
+        <View style={ styles.btnContainer }>
+          <Text style={ styles.btnText }>
             { name }
           </Text>
-          <Text style={styles.btnText}>
+          <Text style={ styles.btnText }>
             { price }
           </Text>
         </View>
@@ -65,13 +57,12 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    bets: state.bets
+    selections: state.selections,
   }
 };
 
 const mapDispatchToProps = dispatch => ({
-    makeBet: (id)=> dispatch(makeBet(id)),
-    deleteBet: (id)=> dispatch(deleteBet(id))
+    toggleBet: (id) => dispatch(toggleBet(id))
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )(BetBtn);

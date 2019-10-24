@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import {deleteBet, makeBet} from "../actions/betActions";
+import { toggleBet } from "../actions/betActions";
 
 class BetInfo extends Component {
   render() {
-    const { name, price,  deleteBet: deleteABet } = this.props;
+    const { name, price, id, toggleBet: toggleABet } = this.props;
     return (
       <View style={styles.infoContainer}>
         <Text>
@@ -16,7 +16,7 @@ class BetInfo extends Component {
         </Text>
         <TouchableOpacity
           style={styles.deleteBtn}
-          onPress={()=> {}}
+          onPress={()=> toggleABet(id)}
         >
           <Text>
             Delete
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
   }
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   deleteBet: (id)=> dispatch(deleteBet(id))
-// });
+const mapDispatchToProps = dispatch => ({
+  toggleBet: (id)=> dispatch(toggleBet(id))
+});
 
-export default connect(null, null)(BetInfo);
+export default connect(null, mapDispatchToProps)(BetInfo);

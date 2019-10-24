@@ -7,15 +7,16 @@ import BetInfo from "../components/BetInfo";
 class BetSlip extends Component {
 
   render(){
-    const { bets, navigation } = this.props;
+    const { selections, navigation } = this.props;
+    const shownSelections = selections.filter( selection => selection.isSelected === true);
     return (
       <View style={styles.container}>
         <StatusBar hidden={true}/>
         <MenuBar navigate={ navigation.toggleDrawer} isSlipOpened={true}/>
         <FlatList
           style={styles.listStyle}
-          data={ bets }
-          renderItem={({ item }) => <BetInfo name={ item.name } price={ item.price }/>}
+          data={ shownSelections }
+          renderItem={({ item }) => <BetInfo name={ item.name } price={ item.price } id={item.id}/>}
           keyExtractor={ item => item.id}
         />
       </View>
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-  bets: state.bets
+  selections: state.selections
 });
 
 export default connect(mapStateToProps)(BetSlip);
