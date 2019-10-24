@@ -1,8 +1,8 @@
 import React from 'react';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
-import EventList from '../src/screens/EventList';
-import BetSlip from '../src/screens/BetSlip';
+import EventList from './screens/EventList/EventList';
+import BetSlip from './screens/BetSlip/BetSlip';
 
 const Navigator = createDrawerNavigator({
     Events: {
