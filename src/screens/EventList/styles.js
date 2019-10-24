@@ -1,4 +1,7 @@
 import { StyleSheet } from 'react-native';
+import {
+  GREY, WHITE, GREEN, DARKGREY,
+} from '../../constants/styleConstants';
 
 export const styles = StyleSheet.create({
   container: {
@@ -14,7 +17,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     margin: 5,
     borderWidth: 2,
-    borderColor: 'lightgrey',
+    borderColor: GREY,
   },
   eventName: {
     padding: 8,
@@ -24,7 +27,7 @@ export const styles = StyleSheet.create({
   marketName: {
     padding: 8,
     fontSize: 18,
-    color: 'lightgrey',
+    color: GREY,
   },
   btn: {
     height: 40,
@@ -32,36 +35,36 @@ export const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    borderColor: 'grey',
-  },
-  btn_sel: {
-    height: 40,
-    width: 100,
-    margin: 10,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: 'lightgreen',
+    backgroundColor: WHITE,
+    borderColor: GREY,
   },
   btnContainer: {
-    height: 40,
-    width: 100,
+    width: '100%',
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: GREY,
+    borderRadius: 10,
+  },
+  btnContainer_sel: {
+    width: '100%',
+    borderWidth: 1,
+    borderColor: GREY,
+    borderRadius: 10,
+    backgroundColor: GREEN,
   },
   btnText: {
     textAlign: 'center',
-    color: 'grey',
+    color: DARKGREY,
   },
   textContainer: {
     flex: 1,
     borderTopWidth: 2,
-    borderTopColor: 'lightgrey',
+    borderTopColor: DARKGREY,
   },
   btnsContainer: {
     height: '100%',
+    width: '100%',
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
 });

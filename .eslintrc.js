@@ -13,5 +13,8 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
-  plugins: ["react", "flowtype"]
+  plugins: ["react", "flowtype"],
+  rules: {
+    "react/prop-types": "off"
+  }
 };

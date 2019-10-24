@@ -11,12 +11,13 @@ const BetSlip = ({ selections, navigation }) => {
   );
 
   const renderItem = useCallback(({ item }) => (
-      <BetInfo
-        name={item.name}
-        market={item.market}
-        price={item.price}
-        id={item.id}
-      />
+    // eslint-disable-next-line react/jsx-filename-extension
+    <BetInfo
+      name={item.name}
+      market={item.market}
+      price={item.price}
+      id={item.id}
+    />
   ), []);
 
   return (
@@ -24,7 +25,8 @@ const BetSlip = ({ selections, navigation }) => {
       <StatusBar hidden />
       <MenuBar
         navigate={navigation.toggleDrawer}
-        isSlipOpened={true} />
+        isSlipOpened
+      />
       <FlatList
         style={styles.listStyle}
         data={shownSelections}

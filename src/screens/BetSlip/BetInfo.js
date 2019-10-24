@@ -9,13 +9,21 @@ const BetInfo = ({
 }) => {
   const handleDeletePress = () => toggleABet(id);
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <View style={styles.infoContainer}>
       <Text>
-        {name} {market}
+        {name}
+        {' '}
+        {market}
       </Text>
       <Text>{price}</Text>
-      <TouchableOpacity style={styles.deleteBtn} onPress={handleDeletePress}>
-        <Text>Delete</Text>
+      <TouchableOpacity
+        style={styles.btnContainer}
+        onPress={handleDeletePress}
+      >
+        <View style={styles.deleteBtn}>
+          <Text>Delete</Text>
+        </View>
       </TouchableOpacity>
     </View>
   );

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { GREY, WHITE } from '../../constants/styleConstants';
 
 export const styles = StyleSheet.create({
   container: {
@@ -14,17 +15,24 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '97%',
-    backgroundColor: 'white',
+    backgroundColor: WHITE,
     margin: 5,
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: GREY,
   },
-  deleteBtn: {
+  btnContainer: {
     height: 40,
     width: 100,
     margin: 10,
+  },
+  deleteBtn: {
+    width: '100%',
+    height: '100%',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: 'lightgrey',
+    backgroundColor: GREY,
+    borderWidth: 1,
+    borderColor: GREY,
+    borderRadius: 10,
   },
 });

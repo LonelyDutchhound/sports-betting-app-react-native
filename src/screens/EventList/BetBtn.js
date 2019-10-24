@@ -10,11 +10,12 @@ const BetBtn = ({
   const selection = selections.filter((bet) => bet.id === id)[0];
   const handleBetPress = () => toggleABet(id);
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <TouchableOpacity
-      style={selection.isSelected ? styles.btn_sel : styles.btn}
+      style={styles.btn}
       onPress={handleBetPress}
     >
-      <View style={styles.btnContainer}>
+      <View style={selection.isSelected ? styles.btnContainer_sel : styles.btnContainer}>
         <Text style={styles.btnText}>{name}</Text>
         <Text style={styles.btnText}>{price}</Text>
       </View>
