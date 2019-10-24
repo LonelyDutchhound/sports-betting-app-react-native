@@ -5,20 +5,19 @@ import EventList from './screens/EventList/EventList';
 import BetSlip from './screens/BetSlip/BetSlip';
 
 const Navigator = createDrawerNavigator({
-    Events: {
-      screen: EventList
-    },
-    Bets: {
-      screen: BetSlip
-    }
+  Events: {
+    screen: EventList,
   },
-  {
-    initialRouteName: 'Events',
-    drawerType: 'front',
-    drawerPosition: 'right',
-    contentComponent: BetSlip
-  }
-);
+  Bets: {
+    screen: BetSlip,
+  },
+},
+{
+  initialRouteName: 'Events',
+  drawerType: 'front',
+  drawerPosition: 'right',
+  contentComponent: BetSlip,
+});
 
 const AppContainer = createAppContainer(Navigator);
 export default AppContainer;

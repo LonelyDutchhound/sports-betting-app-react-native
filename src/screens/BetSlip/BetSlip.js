@@ -1,25 +1,23 @@
-import React, { useCallback } from "react";
-import { View, StatusBar, FlatList } from "react-native";
-import { connect } from "react-redux";
-import MenuBar from "../../components/MenuBar";
-import BetInfo from "./BetInfo";
-import {styles} from "./styles";
+import React, { useCallback } from 'react';
+import { View, StatusBar, FlatList } from 'react-native';
+import { connect } from 'react-redux';
+import MenuBar from '../../components/MenuBar';
+import BetInfo from './BetInfo';
+import { styles } from './styles';
 
 const BetSlip = ({ selections, navigation }) => {
   const shownSelections = selections.filter(
-    selection => selection.isSelected === true
+    (selection) => selection.isSelected === true,
   );
 
-  const renderItem = useCallback(({ item }) => {
-    return (
+  const renderItem = useCallback(({ item }) => (
       <BetInfo
         name={item.name}
         market={item.market}
         price={item.price}
         id={item.id}
       />
-    );
-  }, []);
+  ), []);
 
   return (
     <View style={styles.container}>
@@ -31,14 +29,14 @@ const BetSlip = ({ selections, navigation }) => {
         style={styles.listStyle}
         data={shownSelections}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
 };
 
-const mapStateToProps = state => ({
-  selections: state.selections
+const mapStateToProps = (state) => ({
+  selections: state.selections,
 });
 
 export default connect(mapStateToProps)(BetSlip);

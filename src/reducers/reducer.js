@@ -1,9 +1,9 @@
-import { TOGGLE_BET, GET_EVENTS } from "../constants";
+import { TOGGLE_BET, GET_EVENTS } from '../constants';
 
 const initialState = {
   isFetched: false,
   events: [],
-  selections: []
+  selections: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -13,12 +13,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isFetched: true,
         events: action.events,
-        selections: action.selections
+        selections: action.selections,
       };
     case TOGGLE_BET:
-      const updSelections = state.selections.map(selection => {
-        if (selection.id === action.id)
-          selection.isSelected = !selection.isSelected;
+      const updSelections = state.selections.map((selection) => {
+        if (selection.id === action.id) { selection.isSelected = !selection.isSelected; }
         return selection;
       });
       return { ...state, selections: updSelections };

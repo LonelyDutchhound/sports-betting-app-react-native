@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import {styles} from "./styles";
+import { styles } from './styles';
 
 const Index = (props) => {
   let navBtn;
   if (props.isSlipOpened) {
-    navBtn = <Text style={styles.navBtnText}>X</Text>
+    navBtn = <Text style={styles.navBtnText}>X</Text>;
   } else {
-    navBtn = <Text style={styles.navBtnText}>Bets</Text>
+    navBtn = <Text style={styles.navBtnText}>Bets</Text>;
   }
-  return(
+  return (
     <View style={styles.menu}>
       <TouchableOpacity
         style={styles.navBtn}
