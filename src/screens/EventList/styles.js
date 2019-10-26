@@ -30,8 +30,8 @@ export const styles = StyleSheet.create({
     color: GREY,
   },
   btn: {
-    height: 40,
-    width: 100,
+    flex: 0.45,
+    flexShrink: 1,
     margin: 10,
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -65,6 +65,6 @@ export const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
 });

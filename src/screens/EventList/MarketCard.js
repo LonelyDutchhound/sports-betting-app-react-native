@@ -5,6 +5,7 @@ import { styles } from './styles';
 
 export const MarketCard = ({ name, selections }) => {
   const betBtn = selections.map((selection) => (
+    // eslint-disable-next-line react/jsx-filename-extension
     <BetBtn
       name={selection.name}
       price={selection.price}
